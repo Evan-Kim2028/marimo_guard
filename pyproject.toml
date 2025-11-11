@@ -5,7 +5,7 @@ description = "Preflight guard, watcher, and helpers for Marimo notebooks (stand
 readme = "README.md"
 requires-python = ">=3.13"
 authors = [
-  { name = "Spice MCP", email = "" }
+  { name = "Evan Kim", email = "" }
 ]
 license = { text = "Proprietary" }
 dependencies = [

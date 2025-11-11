@@ -25,22 +25,22 @@ Base guard requires `marimo`. Optional extras:
 
 ```bash
 # Fast checks (static + runtime + offline visual validation warnings)
-spice-mcp-guard path/to/notebook.py
+marimo-guard path/to/notebook.py
 
 # Add MCP checks
-spice-mcp-guard path/to/notebook.py --use-mcp
+marimo-guard path/to/notebook.py --use-mcp
 
 # Strict visual failures (Altair/Plotly/Bokeh/Matplotlib)
-spice-mcp-guard path/to/notebook.py --visual-strict
+marimo-guard path/to/notebook.py --visual-strict
 
 # Strict MCP (MCP outage/errors fail preflight)
-spice-mcp-guard path/to/notebook.py --use-mcp --mcp-strict
+marimo-guard path/to/notebook.py --use-mcp --mcp-strict
 
 # UI strict (headless browser verification)
-spice-mcp-guard path/to/notebook.py --ui-strict --ui-timeout 20
+marimo-guard path/to/notebook.py --ui-strict --ui-timeout 20
 
 # Combine for “belt‑and‑suspenders”
-spice-mcp-guard path/to/notebook.py --use-mcp --mcp-strict --visual-strict --ui-strict
+marimo-guard path/to/notebook.py --use-mcp --mcp-strict --visual-strict --ui-strict
 ```
 
 ## Strictness Levels
@@ -56,7 +56,7 @@ You can set these defaults in a config file (see Config below).
 Register charts to get named, per‑library diagnostics:
 
 ```python
-from spice_mcp.notebooks.chart_registry import register_chart
+from marimo_guard.notebooks.chart_registry import register_chart
 
 # Altair
 chart = alt.Chart(df).mark_line().encode(x="ts:T", y="value:Q")
@@ -171,4 +171,3 @@ require_artifact = true
 - Use MCP + UI strict for pre‑publish or CI to catch client‑only issues.
 - Keep a `.marimo-guard.toml` in the repo to standardize strictness.
 - Log screenshots and HTML on UI failures for faster triage.
-

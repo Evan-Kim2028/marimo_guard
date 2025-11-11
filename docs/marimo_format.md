@@ -2,7 +2,7 @@
 
 ## Overview
 
-spice-mcp generates Marimo notebooks for interactive data visualization. This document explains the notebook format requirements and troubleshooting.
+This document explains the Marimo notebook format requirements and troubleshooting, with notes relevant to marimo_guard validation.
 
 ## ⚠️ Critical Format Requirement
 
@@ -81,18 +81,7 @@ df = pl.read_parquet("data.parquet")
 | Returns | Not required | Must return exported variables |
 | App definition | Not needed | `app = marimo.App()` required |
 
-## Scaffolder Implementation
-
-The `MarimoNotebookScaffolder` class generates proper Marimo 0.17+ format:
-
-```python
-from spice_mcp.notebooks.scaffolder import MarimoNotebookScaffolder
-
-scaffolder = MarimoNotebookScaffolder(query_service, reports_root)
-result = scaffolder.create_report(spec)
-```
-
-### Generated Structure
+## Recommended Structure
 
 1. **App initialization**: `import marimo` and `app = marimo.App()`
 2. **Import cell**: All required libraries
@@ -102,18 +91,14 @@ result = scaffolder.create_report(spec)
 
 ### Cell Dependencies
 
-Marimo cells declare dependencies via function parameters:
+Marimo cells declare dependencies via function parameters. Variables must be returned to be available to other cells:
 
 ```python
 @app.cell
 def _(df, mo):  # Depends on 'df' and 'mo'
     mo.md(f"Rows: {len(df)}")
     return
-```
 
-Variables must be returned to be available to other cells:
-
-```python
 @app.cell
 def _():
     df = pl.read_parquet("data.parquet")
@@ -169,18 +154,16 @@ pip install marimo altair polars pandas
 
 ## Best Practices
 
-1. **Always use the scaffolder**: Don't manually create notebooks - use `MarimoNotebookScaffolder`
-2. **Check Marimo version**: Ensure `marimo >= 0.17.0`
-3. **Test generated notebooks**: Run `marimo edit notebook.py` to verify
-4. **Follow cell structure**: Each logical section should be a separate `@app.cell`
-5. **Return exports**: Always return variables needed by other cells
+1. **Check Marimo version**: Ensure `marimo >= 0.17.0`
+2. **Test notebooks**: Run `marimo edit notebook.py` to verify
+3. **Follow cell structure**: Each logical section should be a separate `@app.cell`
+4. **Return exports**: Always return variables needed by other cells
 
 ## Migration from Old Format
 
 If you have notebooks using `# %%` markers:
 
-1. **Regenerate**: Use the scaffolder to create a new notebook
-2. **Manual conversion**: Convert each `# %%` cell to `@app.cell`:
+1. **Manual conversion**: Convert each `# %%` cell to `@app.cell`:
    ```python
    # Old:
    # %% [python]
@@ -197,5 +180,3 @@ If you have notebooks using `# %%` markers:
 
 - [Marimo Documentation](https://docs.marimo.io/)
 - [Marimo Cell Model](https://docs.marimo.io/guides/cells/)
-- [spice-mcp Scaffolder Source](../src/spice_mcp/notebooks/scaffolder.py)
-

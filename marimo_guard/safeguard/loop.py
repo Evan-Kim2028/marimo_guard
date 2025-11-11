@@ -63,7 +63,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-iters", type=int, default=3, help="Maximum iterations (default 3)")
     p.add_argument("--sleep-seconds", type=int, default=3, help="Seconds to sleep between iterations")
     p.add_argument("--use-mcp", action="store_true", help="Enable MCP checks (recommended)")
-    p.add_argument("--mcp-url", type=str, default=os.environ.get("SPICE_MARIMO_MCP_URL", "http://localhost:2718/mcp/server"))
+    p.add_argument(
+        "--mcp-url",
+        type=str,
+        default=os.environ.get("MARIMO_GUARD_MCP_URL", "http://localhost:2718/mcp/server"),
+    )
     p.add_argument("--mcp-strict", action="store_true", help="Fail on any MCP errors across notebooks")
     p.add_argument("--mcp-wait-seconds", type=int, default=0, help="Wait for MCP availability up to N seconds")
     p.add_argument("--timeout", type=int, default=10)
@@ -117,4 +121,3 @@ def main(argv: list[str] | None = None) -> int:
 
 
 __all__ = ["main"]
-

@@ -1,6 +1,6 @@
 # Marimo Customization Guide
 
-After generating a starter notebook with `spice-mcp notebook` or the `dune_marimo` tool, customize it interactively in Marimo's UI. This guide covers common customization tasks.
+After creating a Marimo notebook, customize it interactively in Marimo's UI. This guide covers common customization tasks.
 
 ## Opening Your Notebook
 
@@ -455,6 +455,5 @@ def _(mo, chart1, chart2, chart3):
 ## Getting Help
 
 - **Marimo Issues**: [GitHub Issues](https://github.com/marimo-team/marimo/issues)
-- **spice-mcp Issues**: [GitHub Issues](https://github.com/Evan-Kim2028/spice-mcp/issues)
+- **marimo_guard Issues**: [GitHub Issues](https://github.com/Evan-Kim2028/marimo_guard/issues)
 - **Marimo Discord**: [Join the Community](https://discord.gg/marimo)
-
