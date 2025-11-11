@@ -56,6 +56,12 @@ port = 2731
 timeout_seconds = 20
 ```
 
+### MCP URL env
+
+- `MARIMO_GUARD_MCP_URL` controls the default MCP endpoint used by `--mcp-url`.
+- Example: `export MARIMO_GUARD_MCP_URL=http://localhost:2718/mcp/server`
+- You can always override with the CLI flag: `--mcp-url <URL>`
+
 ## CLI overview
 
 - `marimo-guard path/to/notebook.py [--json] [--launch] [--use-mcp] [--visual-strict] [--ui-strict] [--ui-port N] [--ui-timeout N] [--smoke-seconds N]`
