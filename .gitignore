@@ -1,0 +1,14 @@
+.venv/
+.uv-cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+logs/
+*.log
+*.parquet
+*.meta.json
+.DS_Store
+notebooks/*

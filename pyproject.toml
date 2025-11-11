@@ -1,0 +1,42 @@
+[project]
+name = "marimo_guard"
+version = "0.1.0"
+description = "Preflight guard, watcher, and helpers for Marimo notebooks (standalone)."
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [
+  { name = "Spice MCP", email = "" }
+]
+license = { text = "Proprietary" }
+dependencies = [
+  "polars>=0.20.0",
+  "requests>=2.31.0",
+  "marimo>=0.7.0",
+  "altair>=5.0.0",
+  "plotly>=5.18.0",
+]
+
+[project.optional-dependencies]
+ui = [
+  "playwright>=1.40.0",
+]
+mcp = [
+  "requests>=2.31.0",
+]
+
+[project.scripts]
+marimo-guard = "marimo_guard.safeguard.guard:main"
+marimo-guard-loop = "marimo_guard.safeguard.loop:main"
+marimo-watch = "marimo_guard.safeguard.watch:main"
+
+[build-system]
+requires = ["hatchling>=1.18.0"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = true
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0.0",
+]
