@@ -5,7 +5,7 @@
 1. Clone the GitHub repository to get marimo_guard locally:
 
    ```sh
-   git clone https://github.com/marimo-ai/marimo_guard.git
+   git clone https://github.com/Evan-Kim2028/marimo_guard.git
    ```
 
 ## Why marimo_guard
